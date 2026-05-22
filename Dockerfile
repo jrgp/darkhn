@@ -18,6 +18,9 @@ RUN CGO_ENABLED=0 go build \
 # ── Stage 2: runtime ─────────────────────────────────────────────────────────
 FROM scratch
 
+# CA certificates are needed for TLS connections to the upstream HN site.
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+
 # Copy the statically-linked binary.
 COPY --from=builder /bin/darkhn /darkhn
 
