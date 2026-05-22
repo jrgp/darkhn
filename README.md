@@ -38,17 +38,19 @@ PORT=3000 ./bin/darkhn
 
 Then open `http://localhost:8080` in your browser.
 
-## Docker
+## Docker / Podman
 
-**Run directly from the registry (no build required):**
+Run directly from the registry (no build required):
 
 ```bash
+# Docker
 docker run -p 8080:8080 ghcr.io/jrgp/darkhn:latest
+
+# Podman (rootless)
+podman run --rm -p 8080:8080 ghcr.io/jrgp/darkhn:latest
 ```
 
-Then open `http://localhost:8080`.
-
-**Or build locally:**
+Or build and run locally:
 
 ```bash
 make docker-build
