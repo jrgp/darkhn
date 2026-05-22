@@ -101,6 +101,7 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Request sent for %s", mirrorURL)
 
 	if cached, ok := p.fromCache(mirrorURL); ok {
+		log.Printf("Cache hit for %s", mirrorURL)
 		w.Header().Set("Content-Type", cached.contentType)
 		w.WriteHeader(cached.statusCode)
 		w.Write(cached.body) //nolint:errcheck
