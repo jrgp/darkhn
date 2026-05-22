@@ -40,15 +40,22 @@ Then open `http://localhost:8080` in your browser.
 
 ## Docker
 
-```bash
-# Build image
-make docker-build
+**Run directly from the registry (no build required):**
 
-# Run container
+```bash
+docker run -p 8080:8080 ghcr.io/jrgp/darkhn:latest
+```
+
+Then open `http://localhost:8080`.
+
+**Or build locally:**
+
+```bash
+make docker-build
 docker run -p 8080:8080 darkhn:latest
 ```
 
-The final image is built `FROM scratch` — just the statically-linked binary and the `inject/` CSS directory.
+The final image is built `FROM scratch` — just the statically-linked binary and the `inject/` CSS directory. Images are published to `ghcr.io/jrgp/darkhn` on every push to `master` (`:latest`) and on version tags (`:v1.2.3`).
 
 ## Development
 
